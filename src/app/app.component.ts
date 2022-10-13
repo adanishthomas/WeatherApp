@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  cityName: string = 'london';
+  cityName: string = 'Bengaluru';
   weatherData?: WeatherData;
 
   ngOnInit(): void {
@@ -31,7 +31,11 @@ export class AppComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.weatherData = response;
+        },
+        error: (err) => {
+          alert(err.error.error.message);
         }
-      });
+      }
+      );
   }
 }
